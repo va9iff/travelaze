@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Manipulation</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .top.row.box {
+            display: flex;
+            justify-content: space-between;
+        }
+        .row {
+            display: flex;
+        }
+/*        .col {*/
+/*            flex: 1;*/
+/*            margin: 10px;*/
+/*        }*/
+        .centered { 
+            align-items: center;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="row bar">
+<!--         <h1 style="color: #454545; margin-left: -20px; margin-right: 20px; font-size: 40px; margin-top: 8px;">
+            Diyar
+        </h1>
+ -->        <!-- // çətinlik -->
+        <details>
+            <div style="padding: 16px 24px; position: absolute; display: flex; flex-direction: column; gap: 12px; margin-left: 10px; background-color: #FCFAEE; border-radius: 15px; display: flex; flex-direction: column; margin-top: -8px; border: 1px solid #252525; box-shadow: 4px 4px 16px #25252512;">
+                <div id="easy" class="row centered"><span style="margin-right: 8px; background-color: #27e250; width: 12px; height: 12px; border-radius: 50%;"></span> Asan</div>
+                <div style="background-color: #252525; opacity: 0.08; height: 1px; "></div>
+                <div id="medium" class="row centered"><span style="margin-right: 8px; background-color: #f4980d; width: 12px; height: 12px; border-radius: 50%;"></span> Orta</div>
+                <div style="background-color: #252525; opacity: 0.08; height: 1px; "></div>
+                <div id="hard" class="row centered"><span style="margin-right: 8px; background-color: #f40d0d; width: 12px; height: 12px; border-radius: 50%;"></span> Çətin</div>
+                
+            </div>
+            <summary class="pointer">
+               <button class="brutal barbutton" style="pointer-events: none;"><img src="./speedometer.svg" width=24 style="margin-right: 10px; translate: 0 5px;">Çətinlik</button> 
+                <h2 class="difficulty-title"></h2>
+            </summary>
+        </details>
+        <!-- oyun modu -->
+        <details style="position: relative; z-index: 999;" id="modesdrop">
+            <div class="picker" style=" margin-top: 8px">
+                <div class="geomode pointer">Coğrafi ağırlıq</div>
+                <div style="background-color: #252525; opacity: 0.08; height: 1px; "></div>
+                <div class="culmode pointer">Mədəni ağırlıq</div>
+            </div>
+            <summary class="pointer">
+                <button class="brutal untouchable barbutton">
+                    <img src="./dices.svg" width=24 style="margin-right: 10px">Oyun modu
+                </button>
+            </summary>
+        </details>
+        <!-- legal -->
+        <details>
+            <div class="picker" style="position: absolute; z-index: 9999; margin-top: 8px">by: <br>Elçin, Vaqif, Kənan, Fatimə
+            </div>
+            <summary class="pointer">
+                <button class="brutal untouchable barbutton">
+                    <img src="./question.svg" width=24 style="margin-right: 10px; translate: 0 4px;"> Məlumat
+                </button>
+            </summary>
+        </details>
+        <div class="filler"></div>
+        <div class="row" style="align-items: flex-start; gap: 5px">
+            <img src="./road.svg" width="22px">
+            <div class="remainder"></div>
+        </div>
+    </div>
+    <div class="top row box">
+        <div class="col mode m1">
+
+            <div class="difficulty">
+                <div class="difficulty-btn-container">
+                    <!-- <button type="button" class="difficulty-btn" id="easy">asan</button> -->
+                    <!-- <button type="button" class="difficulty-btn" id="medium">orta</button> -->
+                    <!-- <button type="button" class="difficulty-btn" id="hard">çətin</button> -->
+                </div>
+            </div>
+            <div class="dirreverser">
+                İstiqamət <img src="./refresh-ccw.svg" width="24p" class="restart pointer">
+            </div>
+            <h2 id="fromto"></h2>
+            <div class="answer"></div>
+            <ul id="nameList"></ul>
+            <div class="inputText">Təxmininizi daxil edin</div>
+            <div class="row centered">
+                <input type="text" id="svgPartInput" placeholder="Təxmininiz?">
+                <button class="btn show brutal">Yoxla</button>
+            </div>
+            <button type="button" id="restartButton" onclick="restartGame()" style="display: none;">Yenidən başla</button>
+            <p id="shortpath"></p>
+            <div id="suggestions"></div>
+        </div>
+        <div class="mode m2" style="min-width: 450px;">
+            <div class="dirreverser">
+                İstiqamət <img src="./refresh-ccw.svg" width="24p" class="restartt pointer">
+            </div>
+           <h2 class="frommto"></h2>
+            <div class="cards">
+                <div class="card c1">
+                    <div class="inside">
+                        <img src="./azerbaycan-siyasi-haritasi.png">
+                        <div class="cardText">70-ə yaxın mağarası olan bu şəhər ən çox “Keşikçidağ” mağarası ilə məşhurdur</div>
+                    </div>
+                </div>
+                <div class="card c2">
+                    <div class="inside">
+                        <img src="./azerbaycan-siyasi-haritasi.png">
+                        <div class="cardText">70-ə yaxın mağarası olan bu şəhər ən çox “Keşikçidağ” mağarası ilə məşhurdur</div>
+                    </div>
+                </div>
+                <div class="card c3">
+                    <div class="inside">
+                        <img src="./azerbaycan-siyasi-haritasi.png">
+                        <div class="cardText">70-ə yaxın mağarası olan bu şəhər ən çox “Keşikçidağ” mağarası ilə məşhurdur</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div id="svgContainer">
+                
+                <div id="overlay">
+                    <div id="overlayer">
+                        <img src="./azerbaycan-siyasi-haritasi.png" height="50%" width="100%" class="splash">
+                        <div class="overtitle">Ölkə</div>
+                        <div class="overtext">Bu ərazi, eramızdan əvvəl 12–7-ci əsrləri əhatə edən Xocalı-Gədəbəy mədəniyyətinin bir hissəsi kimi tariximizə daxil olmuşdur. Bu gözəl milli park, Kafkas leoparı və qonca ayı kimi müxtəlif flora və fauna növlərinə ev sahibliyi edir.</div>
+                        <div style="text-align: center; color: #fffa; transform: translateY(10px);">
+                            
+                        klikləyərək bağla
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="gameResult"></div>
+        </div>
+    </div>
+    <div id="popup1" class="overlay">
+        <div class="popup">
+            <div class="content" id="popup-content"></div>
+            <a class="close" href="#">&times;</a>
+        </div>
+    </div>
+
+    <script src="script.js" type="module"></script>
+</body>
+</html>
